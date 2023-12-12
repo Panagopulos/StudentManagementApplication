@@ -23,7 +23,9 @@ public class StudentManagementApplication implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		
+	try {	
+		//Check if students already exist
+		if (studentRepository.count()== 0) { 
 		Student student1 = new Student("Tomas", "Panagopulos", "tpanagopulos@gmail.com");
 		studentRepository.save(student1);
 		
@@ -32,6 +34,12 @@ public class StudentManagementApplication implements CommandLineRunner {
 		
 		Student student3 = new Student("tony", "stark" , "starkmarvel@gmail.com");
 		studentRepository.save(student3);
-	}
+		}
+	}  catch (Exception e) {
+        // Handle the exception (log it, throw a custom exception, etc.)
+        e.printStackTrace();
+     }
+  }
 }
+
 	
